@@ -1,0 +1,23 @@
+
+repos:
+  # 1. UNIVERSAL SECRET SCANNING (For all languages)
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 'v8.30.0' # Pointing to the latest stable version
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: 'v10.1.0'  # Use the sha / tag you want to point at
+    hooks:
+    -   id: eslint
+        files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
+        types: [file]
+        additional_dependencies:
+          - eslint
+          - eslint-plugin-security # Add-on chuyên tìm lỗi bảo mật JS
+
+  # 3. Mấy cái dọn dẹp linh tinh (Bonus từ Mentor)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 'v6.0.0'
+    hooks:
+      - id: trailing-whitespace # Xóa dấu cách thừa
+      - id: check-yaml          # Kiểm tra file YAML có lỗi cú pháp không
