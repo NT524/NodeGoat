@@ -5,12 +5,14 @@ repos:
     rev: 'v8.30.0' # Pointing to the latest stable version
     hooks:
       - id: gitleaks
+
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: 'v10.1.0'  # Use the sha / tag you want to point at
     hooks:
     -   id: eslint
         files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
         types: [file]
+        args: ['--max-warnings=0']
         additional_dependencies:
           - eslint
           - eslint-plugin-security # Add-on chuyên tìm lỗi bảo mật JS
